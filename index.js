@@ -96,7 +96,7 @@ $(document).ready(function() {
                 endTimeOfEvent = document.getElementById('eventEndTime').value;
                 eventLocation = document.getElementById('eventLocation').value;
                 eventDescription = document.getElementById('description').value;
-
+                console.log('createEvent');
                 if(participantsSelected.length == 0) {
                     alert("Please select participants for task/meeting.");
                     return;
