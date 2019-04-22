@@ -16,6 +16,102 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-8">
             <div class="calendar"></div>
+
+            <div id="createTaskModal" class="modal fade">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form class="form-horizontal" id="createTaskForm">
+                            <div class="modal-header">
+                                <button class="close" type="button" data-dismiss="modal">&times;</button>
+                                <h3 class="modal-title">Create a Task/Event</h3>
+                            </div>
+                            <div class="modal-body" id="createTaskModalBody">
+                                <div class="modalBodyElements" id="main">
+                                    <div class="row">
+                                        <div class="col-sm-6 column1">
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="eventTitle">Task Title: <strong><sup style="color: red;">*</sup></strong></label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="eventTitle" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="eventStartTime">Start Time: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="eventStartTime" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="eventEndTime">End Time: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="eventEndTime" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="allDayEvent">All Day Event: </label>
+                                                <div class="col-sm-8">
+                                                    <input type="checkbox" id="allDayEventCheckbox" />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="selectParticipants">Participants: <strong><sup style="color: red;">*</sup></strong></label>
+                                                <div class="col-sm-8">
+                                                    <select id="selectParticipantOptions" style="width: 100%;" multiple="multiple" required>
+                                                        <option></option>
+                                                        <option value="Participant-1">Participant-1</option>
+                                                        <option value="Participant-2">Participant-2</option>
+                                                        <option value="Participant-3">Participant-3</option>
+                                                        <option value="Participant-4">Participant-4</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="location">Location: <strong><sup style="color: red;">*</sup></strong></label>
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="eventLocation" required />
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="description">Description: </label>
+                                                <div class="col-sm-8">
+                                                    <textarea class="form-control" id="description" rows="5" placeholder="Event Details.."></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-sm-4" for="selectParticipants">Priority: <strong><sup style="color: red;">*</sup></strong></label>
+                                                <div class="col-sm-8">
+                                                    <select id="taskPriority" style="width: 100%;" required="required">
+                                                        <option></option>
+                                                        <option value="Low">Low</option>
+                                                        <option value="Normal">Normal</option>
+                                                        <option value="High">High</option>
+                                                        <option value="Confidential">Confidential</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6 column2" id="eventsList">
+                                            <div class="form-group container">
+                                                <label class="control-label" for="taskDetails"><h4>Scheduled Tasks: </h4></label><strong><span style="color: tomato;" id="dateclicked"></span></strong><br/><br/>
+                                                <div style="margin-left: 50px;">
+                                                    <span id="scheduledTasks">
+                                                        <div class="col-sm-6 left"></div>
+                                                        <div class="col-sm-6 right"></div>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer" style="text-align: center;">
+                                <button type="button" class="btn btn-primary" id="createEvent">Create an Event</button>
+                                <button type="button" class="btn btn-danger" id="closeModal" data-dismiss="modal">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
         
 
