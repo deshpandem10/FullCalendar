@@ -11,9 +11,6 @@ $(document).ready(function() {
     var description = [];
     var mapForDescription = new Map();
     var initialDateOfDraggedEvent;
-    var initialParticipantsOfDraggedEvent;
-    var initiallocationOFDraggedEvent;
-    var initialStartOfDraggedEvent;
     var initialEndOfDraggedEvent;
 
     $('.calendar').fullCalendar({
@@ -242,6 +239,133 @@ $(document).ready(function() {
                     }
                 });
             });
+            // display the date clicked beside the heading of Scheduled Tasks
+            document.getElementById('dateclicked').innerHTML = " " + "(" + dateClicked + ")";
+
+            /** display the already scheduled tasks in the column-2 of modal */
+            // scheduled tasks under the 'Scheduled Tasks' heading on modal
+            var getDataOFMap = myMap.get(dateClicked);
+            var getParticipantsFromMap = mapForParticipants.get(dateClicked);
+            var getLocationFromMap = mapForLocation.get(dateClicked);
+            var getDescriptionFromMap = mapForDescription.get(dateClicked);
+
+            $('#allDayEventCheckbox').on('click', function() {
+                let isCheckedAgain = $('#allDayEventCheckbox').is(':checked');
+                if(isCheckedAgain == true) {
+                    $('#eventStartTime').val("");
+                    $('#eventEndTime').val("");
+                    $('#eventStartTime').attr('disabled', 'disabled');
+                    $('#eventEndTime').attr('disabled', 'disabled');
+                } else if(isCheckedAgain == false) {
+                    $('#eventStartTime').attr('disabled', false);
+                    $('#eventEndTime').attr('disabled', false);
+                }
+            }); 
+            
+            if((myMap.size != 0) && (getDataOFMap != undefined)) {              
+                $('#scheduledTasks').html('');
+                for(i = 0; i < getDataOFMap.length; i++) {
+                    if(getDataOFMap[i].end) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
+                        $('#scheduledTasks').append(
+                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">'+  getDataOFMap[i].title + '</b>'+'<br/>' +
+                            '<b>Start time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' +  getDataOFMap[i].start +'</b>'+ '<br/>' +
+                            '<b>End time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' +  getDataOFMap[i].end  +'</b>'+ '<br/>' +
+                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</b>'+'<br/>' +
+                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getLocationFromMap[i]  +'</b>'+ '</br>' +
+                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</b>'+'<hr/>'
+                        );
+                    }
+                    else {
+                        $('#scheduledTasks').append(
+                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">'+  getDataOFMap[i].title + '</b>'+'<br/>' +
+                            '<b>Start time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' +  "-" +'</b>'+ '<br/>' +
+                            '<b>End time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + "-" +'</b>'+ '<br/>' +
+                            '<b>Full Day:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' +" Yes " +'</b>' + '<br/>' +
+                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</b>'+ '<br/>' +
+                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getLocationFromMap[i]  +'</b>'+ '</br>' +
+                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<b style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</b>'+'<hr/>'
+                        );
+                    }
+                }              
+            }
+            /** ./..display the already sceduled tasks in the column-2 of modal */
+        },
+
+        eventClick: function(event, jsEvent, view) {
+            var eventTitleOnClick = event.title;
+
+            checkEventClick();
+            function checkEventClick(renameTitle) {
+                Swal.fire({
+                    title: `What you want to do with event - ${eventTitleOnClick} ?`,
+                    type: 'warning',
+                    html: `<input type="text" id="TextBox-${renameTitle}" value="${eventTitleOnClick}">`,
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    confirmButtonText: 'Delete the Event',
+                    cancelButtonText: 'Rename the Event',
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: 'rgba(64, 171, 5, 1)',
+                }).then((result) => {
+                    if(result.value) {
+                        var date = event.start.format();
+                        var onlyDateFinal = date.substr(0, 10);
+                        if(myMap.has(onlyDateFinal)) {
+                            taskList = myMap.get(onlyDateFinal);
+                        }
+
+                        taskList.find(function(element) {
+                            if(event.id === element.id) {
+                                var taskIndex = taskList.indexOf(element);
+                                taskList.splice(taskIndex, 1);
+                            }
+                            $('.calendar').fullCalendar('removeEvents', event.id);
+                        });  
+                    }
+                    else {
+                        var date = event.start.format();
+                        var onlyDateFinal = date.substr(0, 10);
+                        if(myMap.has(onlyDateFinal)) {
+                            taskList = myMap.get(onlyDateFinal); 
+                        }
+                        taskList.find(function(element) {
+                            if(event.id === element.id) {
+                                var newTitle = document.getElementById("TextBox-"+renameTitle).value;
+                                element.title = newTitle;
+                            }
+                            event.title = newTitle;
+                            $('.calendar').fullCalendar('updateEvent', event);
+                        });
+                    }
+                })  
+            };
         },
     });
-})
+});
+
+/** return colors randomly, starts */
+function selectEventColours(){
+    var colours = ['#9c27b0', '#2196f3', '#e91e63', '#f44336','#20e228', '#ffc107', 'ff9800', 'f19992', '009688',
+                    '#ef8b8b', '#08de91', '#efae18', '#ad7900', '#ff15b5', '#9b22d6'
+                ];
+    var length = colours.length;
+    var num = Math.floor(Math.random(0, length-1)*10);
+
+    return colours[num];
+}
+/** return colors randomly, ends */
+
+/** generate unique ID (UUID), starts */
+function generateUUID() {
+    var d = new Date().getTime();
+    if(Date.now){
+        d = Date.now(); //high-precision timer
+    }
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+        var r = (d + Math.random()*16)%16 | 0;
+        d = Math.floor(d/16);
+        return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+    });
+    return uuid;
+};
+/** generate unique ID (UUID), ends */
