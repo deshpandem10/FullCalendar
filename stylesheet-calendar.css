@@ -3,3 +3,7 @@
     height: 750px;
     width: 750px;
 }
+
+#calendarColumn {
+    border-left: 1px solid #ada9a9;
+}
