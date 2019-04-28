@@ -7,3 +7,5 @@
 #calendarColumn {
     border-left: 1px solid #ada9a9;
 }
+
+#previousAndNextMonths { display: flex; }
