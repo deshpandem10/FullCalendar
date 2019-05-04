@@ -33,40 +33,13 @@ $(document).ready(function() {
     console.log('last month: ', selectedMonthName);
 
     $('.prevMonthCalendar').fullCalendar({
-        header: {
-            left: 'title',
-            center: '',
-            right: 'prev,next today'
-        },
+      //  header: {
+      //      left: 'title',
+      //      center: '',
+      //      right: 'prev,next today'
+      //  },
         defaultDate: moment().add(-1, "months"),
     });
-
-  //  $('.nextMonthCalendar').fullCalendar({
-  //      header: {
-  //          left: 'title',
-  //          center: '',
-  //          right: 'prev,next today'
-  //      },
-  //      defaultDate: moment().add(1, "months"),
-  //  });
-
-  //  jQuery('.previousMonth').fullCalendar({
-  //      viewDisplay   : function(view) {
-  //        var now = new Date(); 
-  //        var end = new Date();
-  //        end.setMonth(now.getMonth() + 11); //Adjust as needed
-  //  
-  //        var cal_date_string = view.start.getMonth()+'/'+view.start.getFullYear();
-  //        var cur_date_string = now.getMonth()+'/'+now.getFullYear();
-  //        var end_date_string = end.getMonth()+'/'+end.getFullYear();
-  //  
-  //        if(cal_date_string == cur_date_string) { jQuery('.fc-button-prev').addClass("fc-state-disabled"); }
-  //        else { jQuery('.fc-button-prev').removeClass("fc-state-disabled"); }
-  //  
-  //        if(end_date_string == cal_date_string) { jQuery('.fc-button-next').addClass("fc-state-disabled"); }
-  //        else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
-  //      }
-  //  });
 
     $('.calendar').fullCalendar({
         header: {
