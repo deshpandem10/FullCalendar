@@ -13,6 +13,61 @@ $(document).ready(function() {
     var initialDateOfDraggedEvent;
     var initialEndOfDraggedEvent;
 
+    // var date = new Date();
+    // date.setMonth(date.getMonth() - 1, 1);
+    // $('#datepicker').datepicker({defaultDate: date});
+
+    var months = [ "January", "February", "March", "April", "May", "June", 
+           "July", "August", "September", "October", "November", "December" ];
+
+    var d = new Date();
+    var newMonth = d.getMonth() - 1;
+    var selectedMonthName = months[newMonth];
+
+    if(selectedMonthName < 0){
+        selectedMonthName += 12;
+        d.setYear(d.getYear() - 1);
+    }
+    d.setMonth(selectedMonthName);
+
+    console.log('last month: ', selectedMonthName);
+
+    $('.prevMonthCalendar').fullCalendar({
+        header: {
+            left: 'title',
+            center: '',
+            right: 'prev,next today'
+        },
+        defaultDate: moment().add(-1, "months"),
+    });
+
+  //  $('.nextMonthCalendar').fullCalendar({
+  //      header: {
+  //          left: 'title',
+  //          center: '',
+  //          right: 'prev,next today'
+  //      },
+  //      defaultDate: moment().add(1, "months"),
+  //  });
+
+  //  jQuery('.previousMonth').fullCalendar({
+  //      viewDisplay   : function(view) {
+  //        var now = new Date(); 
+  //        var end = new Date();
+  //        end.setMonth(now.getMonth() + 11); //Adjust as needed
+  //  
+  //        var cal_date_string = view.start.getMonth()+'/'+view.start.getFullYear();
+  //        var cur_date_string = now.getMonth()+'/'+now.getFullYear();
+  //        var end_date_string = end.getMonth()+'/'+end.getFullYear();
+  //  
+  //        if(cal_date_string == cur_date_string) { jQuery('.fc-button-prev').addClass("fc-state-disabled"); }
+  //        else { jQuery('.fc-button-prev').removeClass("fc-state-disabled"); }
+  //  
+  //        if(end_date_string == cal_date_string) { jQuery('.fc-button-next').addClass("fc-state-disabled"); }
+  //        else { jQuery('.fc-button-next').removeClass("fc-state-disabled"); }
+  //      }
+  //  });
+
     $('.calendar').fullCalendar({
         header: {
             left: 'prev, next',

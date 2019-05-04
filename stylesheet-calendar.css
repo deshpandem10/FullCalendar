@@ -8,4 +8,12 @@
     border-left: 1px solid #ada9a9;
 }
 
+.prevMonthCalendar {
+    width: 400px;
+}
+
+.nextMonthCalendar {
+    width: 400px;
+}
+
 #previousAndNextMonths { display: flex; }
