@@ -1,20 +1,21 @@
-.calendar {
-    margin-top: 20px;
-    height: 750px;
-    width: 750px;
+body {
+    color: #585858;
 }
 
+.calendar {
+    margin-top: 2%;
+    height: 90%;
+    width: 90%;
+}
+.fc-today { background: #ffdfee !important; }
+.fc-fri { color: red !important; }
+
+.fc-day:hover { background-color: #f5f5f5; }
+
 #calendarColumn {
-    border-left: 1px solid #ada9a9;
+    border-left: 1px solid #c3c3c3;
 }
 
 .prevMonthCalendar {
-    margin-left: 20px;
-    width: 400px;
+    margin: 5%;
 }
-
-.nextMonthCalendar {
-    width: 400px;
-}
-
-#previousAndNextMonths { display: flex; }
