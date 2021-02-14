@@ -3,11 +3,10 @@ body {
 }
 
 .calendar {
-    margin-top: 2%;
-    height: 90%;
-    width: 90%;
+    margin-top: 2% !important;
+    width: 80%;
 }
-.fc-today { background: #ffdfee !important; }
+.fc-today { background: #ffbfdd !important; }
 .fc-fri { color: red !important; }
 
 .fc-day:hover { background-color: #f5f5f5; }
@@ -19,3 +18,12 @@ body {
 .prevMonthCalendar {
     margin: 5%;
 }
+
+/* CSS for Bootstrap modal body */
+.form-control { height: 2em; }
+.form-group label {
+    font-weight: 100;
+    font-size: 0.85em;
+}
+
+#scheduled_tasks_label { font-size: medium; font-weight: 500; }
