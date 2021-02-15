@@ -295,21 +295,21 @@ $(document).ready(function() {
                 for(i = 0; i < getDataOFMap.length; i++) {
                     if(getDataOFMap[i].end) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
                         $('#scheduledTasks').append(
-                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">'+  getDataOFMap[i].title + '</p>'+'<br/>' +
-                            '<b>Start time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' +  getDataOFMap[i].start +'</p>'+ '<br/>' +
-                            '<b>End time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' +  getDataOFMap[i].end  +'</p>'+ '<br/>' +
-                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</p>'+'<br/>' +
-                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getLocationFromMap[i]  +'</p>'+ '</br>' +
-                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</p>'+'<br/><br/>'
+                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
+                            '<b>Start time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].start +'</span>'+ '<br/>' +
+                            '<b>End time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].end  +'</span>'+ '<br/>' +
+                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+'<br/>' +
+                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
+                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
                         );
                     }
                     else {
                         $('#scheduledTasks').append(
-                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">'+  getDataOFMap[i].title + '</p>'+'<br/>' +
-                            '<b>Full Day:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' +" Yes " +'</p>' + '<br/>' +
-                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</p>'+ '<br/>' +
-                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getLocationFromMap[i]  +'</p>'+ '</br>' +
-                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<p style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</p>'+'<br/><br/>'
+                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
+                            '<b>Full Day:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +" Yes " +'</span>' + '<br/>' +
+                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+ '<br/>' +
+                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
+                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
                         );
                     }
                 }              
