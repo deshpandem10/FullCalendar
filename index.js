@@ -295,12 +295,12 @@ $(document).ready(function() {
                 for(i = 0; i < getDataOFMap.length; i++) {
                     if(getDataOFMap[i].end) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
                         $('#scheduledTasks').append(
-                            '<b>Title:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
-                            '<b>Start time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].start +'</span>'+ '<br/>' +
-                            '<b>End time:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].end  +'</span>'+ '<br/>' +
-                            '<b>Participants:  </b>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+'<br/>' +
-                            '<b>Location:  </b>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
-                            '<b>Description:  </b>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
+                            '<span class="scheduled_tasks_label">Title:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
+                            '<span class="scheduled_tasks_label">Start time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].start +'</span>'+ '<br/>' +
+                            '<span class="scheduled_tasks_label">End time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].end  +'</span>'+ '<br/>' +
+                            '<span class="scheduled_tasks_label">Participants:  </span>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+'<br/>' +
+                            '<span class="scheduled_tasks_label">Location:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
+                            '<span class="scheduled_tasks_label">Description:  </span>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
                         );
                     }
                     else {
