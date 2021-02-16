@@ -182,6 +182,7 @@ $(document).ready(function() {
                 }).then((result) => {
                     if(result.value) {    
                         if((startTimeOfEvent != "") && (!isChecked)) {
+                            console.log("start time before editing: ", startTimeOfEvent);
                             let eventDateAndTime = function getAsDate (date, time) {
                                 var hours = Number(time.match(/^(\d+)/)[1]);
                                 var minutes = Number(time.match(/:(\d+)/)[1]);
@@ -200,6 +201,8 @@ $(document).ready(function() {
                                 return newDate;
                             }
                             var startDateAndTime = eventDateAndTime (dateClicked, startTimeOfEvent);
+
+                            console.log("start time + date after editing: ", startDateAndTime);
 
                             /** throw message if time conflicts with the participants selected, starts */
                             for (var i = 0; i < participantsTopLevel.length; i++) {
@@ -223,12 +226,17 @@ $(document).ready(function() {
                             mapForParticipants.set(dateClicked, participantsTopLevel);
                             mapForLocation.set(dateClicked, location);
                             mapForDescription.set(dateClicked, description);
+
+                            let eventDisplay_startTime = startDateAndTime.slice(11);
+                            let eventDisplay_endTime = endDateAndTime.slice(11);
                             
                             var eventWithTimings = {
                                 id: generateUUID(),
                                 title: eventTitle,
                                 start: startDateAndTime,
                                 end: endDateAndTime,
+                                startTime: eventDisplay_startTime,
+                                endTime: eventDisplay_endTime,
                                 allDay: false,
                                 editable: true,
                                 color: selectEventColours()
@@ -320,11 +328,11 @@ $(document).ready(function() {
             if((myMap.size != 0) && (getDataOFMap != undefined)) {              
                 $('#scheduledTasks').html('');
                 for(i = 0; i < getDataOFMap.length; i++) {
-                    if(getDataOFMap[i].end) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
+                    if(getDataOFMap[i].endTime) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
                         $('#scheduledTasks').append(
                             '<span class="scheduled_tasks_label">Title:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
-                            '<span class="scheduled_tasks_label">Start time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].start +'</span>'+ '<br/>' +
-                            '<span class="scheduled_tasks_label">End time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].end  +'</span>'+ '<br/>' +
+                            '<span class="scheduled_tasks_label">Start time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].startTime +'</span>'+ '<br/>' +
+                            '<span class="scheduled_tasks_label">End time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].endTime  +'</span>'+ '<br/>' +
                             '<span class="scheduled_tasks_label">Participants:  </span>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+'<br/>' +
                             '<span class="scheduled_tasks_label">Location:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
                             '<span class="scheduled_tasks_label">Description:  </span>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
