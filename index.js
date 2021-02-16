@@ -121,28 +121,55 @@ $(document).ready(function() {
                 endTimeOfEvent = document.getElementById('eventEndTime').value;
                 eventLocation = document.getElementById('eventLocation').value;
                 eventDescription = document.getElementById('description').value;
+
+                if (eventTitle == "") {
+                    Swal.fire({
+                        title: 'Oops..',
+                        type: 'error',
+                        text: 'Please enter the Task Title!'
+                    });
+                    return;
+                }
+
                 if(participantsSelected.length == 0) {
-                    alert("Please select participants for task/meeting.");
+                    Swal.fire({
+                        title: 'Oops..',
+                        type: 'error',
+                        text: 'Please select participants for the Task / Meeting!'
+                    });
                     return;
                 }
 
                 if((eventLocation == "") || (eventLocation == undefined)) {
-                    alert("Please select location for task/meeting.");
+                    Swal.fire({
+                        title: 'Oops..',
+                        type: 'error',
+                        text: 'Please select location for the Task / Meeting!'
+                    });
                     return;
                 }
 
                 if(endTimeOfEvent < startTimeOfEvent) {
-                    alert("Please enter valid start time and end time.");
+                    Swal.fire({
+                        title: 'Oops..',
+                        type: 'error',
+                        text: 'Please enter valid start time and end time for the Task / Meeting!'
+                    });
                     return;
                 }
 
                 var isChecked = $('#allDayEvent').is(':checked');
                 if(!isChecked) {
                     if((eventTitle == "") || (startTimeOfEvent == "") || (endTimeOfEvent == "")) {
-                        alert("Please mention whether the event is All Day event or else fill in the Start Time or End Time of event!");
+                        Swal.fire({
+                            title: 'Oops..',
+                            type: 'error',
+                            text: 'Please mention whether the event is All Day event or else fill in the Start Time or End Time of event!'
+                        });
                         return;
                     }
                 }
+
                 Swal.fire({
                     title: 'Are you sure?',
                     type: 'warning',
