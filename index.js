@@ -61,8 +61,8 @@ $(document).ready(function() {
             description = mapForDescription.get(dateClicked);
 
             // get the value of selected participants when any change on the dropdown from the modal is detected 
-            $('#createTaskModal').off('change').on('change', '#selectParticipantOptions', function() {
-                participantsSelected = $('#selectParticipantOptions').select2('val');
+            $('#createTaskModal').off('change').on('change', '#selectParticipants', function() {
+                participantsSelected = $('#selectParticipants').select2('val');
             });
 
             /** check date and clear scheduled tasks for new date clicked, starts */
@@ -93,7 +93,7 @@ $(document).ready(function() {
             $('#createTaskModal').modal('show');
 
             //placeholder for select2 dropdown having participants 
-            $('#selectParticipantOptions').select2({
+            $('#selectParticipants').select2({
                 placeholder: "Select Participants.."
             });
 
@@ -136,7 +136,7 @@ $(document).ready(function() {
                     return;
                 }
 
-                var isChecked = $('#allDayEventCheckbox').is(':checked');
+                var isChecked = $('#allDayEvent').is(':checked');
                 if(!isChecked) {
                     if((eventTitle == "") || (startTimeOfEvent == "") || (endTimeOfEvent == "")) {
                         alert("Please mention whether the event is All Day event or else fill in the Start Time or End Time of event!");
@@ -277,8 +277,8 @@ $(document).ready(function() {
             var getLocationFromMap = mapForLocation.get(dateClicked);
             var getDescriptionFromMap = mapForDescription.get(dateClicked);
 
-            $('#allDayEventCheckbox').on('click', function() {
-                let isCheckedAgain = $('#allDayEventCheckbox').is(':checked');
+            $('#allDayEvent').on('click', function() {
+                let isCheckedAgain = $('#allDayEvent').is(':checked');
                 if(isCheckedAgain == true) {
                     $('#eventStartTime').val("");
                     $('#eventEndTime').val("");
