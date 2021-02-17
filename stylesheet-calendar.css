@@ -26,6 +26,9 @@ body {
     font-size: 0.85em;
 }
 
+#scheduledTasks { width: 32% }
+
 #scheduled_tasks_label { font-size: medium; font-weight: 500; }
-.scheduled_tasks_label { font-size: small; font-weight: 500; }
+.scheduled_tasks_label { font-size: small; font-weight: 500; line-height: 1em; }
+.scheduled_tasks_details { line-height: 1em; color: #2196f3; }
 #eventsList { margin-left: 2em; }

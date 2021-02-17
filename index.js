@@ -330,12 +330,22 @@ $(document).ready(function() {
                 for(i = 0; i < getDataOFMap.length; i++) {
                     if(getDataOFMap[i].endTime) {              // check if the element "end" of the object is present, if yes, then it is not All Day event
                         $('#scheduledTasks').append(
-                            '<span class="scheduled_tasks_label">Title:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">'+  getDataOFMap[i].title + '</span>'+'<br/>' +
-                            '<span class="scheduled_tasks_label">Start time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].startTime +'</span>'+ '<br/>' +
-                            '<span class="scheduled_tasks_label">End time:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' +  getDataOFMap[i].endTime  +'</span>'+ '<br/>' +
-                            '<span class="scheduled_tasks_label">Participants:  </span>' + "&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getParticipantsFromMap[i]  +'</span>'+'<br/>' +
-                            '<span class="scheduled_tasks_label">Location:  </span>' + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getLocationFromMap[i]  +'</span>'+ '</br>' +
-                            '<span class="scheduled_tasks_label">Description:  </span>' + "&nbsp;&nbsp;&nbsp;"+'<span style="color:#2196f3;">' + getDescriptionFromMap[i]  +'</span>'+'<br/><br/>'
+                            '<div class="col-sm-4">' +
+                                '<p class="scheduled_tasks_label">Title:  </p>' + 
+                                '<p class="scheduled_tasks_label">Start time:  </p>' + 
+                                '<p class="scheduled_tasks_label">End time:  </p>' + 
+                                '<p class="scheduled_tasks_label">Participants:  </p>' + 
+                                '<p class="scheduled_tasks_label">Location:  </p>' + 
+                                '<p class="scheduled_tasks_label">Description:  </p>' + '<br/><br/>' + 
+                            '</div>' + 
+                            '<div class="col-sm-8">' +
+                                '<p class="scheduled_tasks_details">' + getDataOFMap[i].title + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getDataOFMap[i].startTime + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getDataOFMap[i].endTime + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getParticipantsFromMap[i] + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getLocationFromMap[i] + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getDescriptionFromMap[i] + '<p>' +
+                            '</div>' 
                         );
                     }
                     else {
