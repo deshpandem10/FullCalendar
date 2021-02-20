@@ -338,13 +338,13 @@ $(document).ready(function() {
                                 '<p class="scheduled_tasks_label">Location:  </p>' + 
                                 '<p class="scheduled_tasks_label">Description:  </p>' + '<br/><br/>' + 
                             '</div>' + 
-                            '<div class="col-sm-8">' +
+                            '<div class="col-sm-8" id="taskDetailsSection">' +
                                 '<p class="scheduled_tasks_details">' + getDataOFMap[i].title + '<p>' +
                                 '<p class="scheduled_tasks_details">' + getDataOFMap[i].startTime + '<p>' +
                                 '<p class="scheduled_tasks_details">' + getDataOFMap[i].endTime + '<p>' +
-                                '<p class="scheduled_tasks_details">' + getParticipantsFromMap[i] + '<p>' +
+                                '<p class="scheduled_tasks_details" id="participantsSection">' + getParticipantsFromMap[i] + '<p>' +
                                 '<p class="scheduled_tasks_details">' + getLocationFromMap[i] + '<p>' +
-                                '<p class="scheduled_tasks_details">' + getDescriptionFromMap[i] + '<p>' +
+                                '<p class="scheduled_tasks_details">' + getDescriptionFromMap[i] + '<p>' + '<br/><br/>' +
                             '</div>' 
                         );
                     }
@@ -359,6 +359,17 @@ $(document).ready(function() {
                     }
                 }              
             }
+
+            let divWidth = $('#taskDetailsSection').width();
+            let text = $('#participantsSection');
+            let fontSize = 11;
+
+            if(text.width() > divWidth) {
+                text.css("font-size", fontSize -= 0.75);
+            }
+
+            text.css("display", "inline");
+
             /** ./..display the already sceduled tasks in the column-2 of modal */
         },
 
